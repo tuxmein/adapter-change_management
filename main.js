@@ -1,8 +1,8 @@
 // Update this constant with your ServiceNow credentials
 const options = {
   url: 'https://dev97684.service-now.com/',
-  username: 'tuxmein',
-  password: 'IGu3ssIHav32!'
+  username: 'admin',
+  password: 'TryS0m3Th1ngN3w!'
 };
 
 
