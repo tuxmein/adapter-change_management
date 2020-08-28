@@ -118,7 +118,7 @@ healthcheck(callback) {
       */
       this.emitOffline();
       log.info('Service now adpter is OFFLINE {this.id}');
-      callbackError = error
+      callbackError = error;
    } else {
      /**
       * Write this block.
