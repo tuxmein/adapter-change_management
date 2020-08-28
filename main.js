@@ -101,8 +101,6 @@ healthcheck(callback) {
     * or the instance was hibernating. You must write
     * the blocks for each branch.
     */
-   let callbackData = null;
-   let callbackError = null;
    if (error) {
      /**
       * Write this block.
@@ -117,8 +115,6 @@ healthcheck(callback) {
       * for the callback's errorMessage parameter.
       */
       this.emitOffline();
-      log.info('Service now adpter is OFFLINE {this.id}');
-      callbackError = error;
    } else {
      /**
       * Write this block.
@@ -131,8 +127,6 @@ healthcheck(callback) {
       * responseData parameter.
       */
       this.emitOnline();
-      callbackData = result;
-      log.info('Service now adapter is ONLINE');
    }
  });
 }
