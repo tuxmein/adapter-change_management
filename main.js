@@ -101,6 +101,8 @@ healthcheck(callback) {
     * or the instance was hibernating. You must write
     * the blocks for each branch.
     */
+    let callbackData = null;
+    let callbackError = null;
    if (error) {
      /**
       * Write this block.
@@ -115,6 +117,8 @@ healthcheck(callback) {
       * for the callback's errorMessage parameter.
       */
       this.emitOffline();
+      log.error('Service now adapter is offline {this.id}');
+      callbackError = error;
    } else {
      /**
       * Write this block.
@@ -127,6 +131,9 @@ healthcheck(callback) {
       * responseData parameter.
       */
       this.emitOnline();
+
+      log.info('Service now adapter is online');
+      callbackData = result;
    }
  });
 }
@@ -184,7 +191,7 @@ healthcheck(callback) {
      * Note how the object was instantiated in the constructor().
      * get() takes a callback function.
      */
-     ServiceNowConnector.get(callback);
+     this.connector.get(callback);
   }
 
   /**
@@ -203,7 +210,7 @@ healthcheck(callback) {
      * Note how the object was instantiated in the constructor().
      * post() takes a callback function.
      */
-     ServiceNowConnector.post(callback);
+     this.connector.post(callback);
   }
 }
 
