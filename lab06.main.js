@@ -191,22 +191,7 @@ healthcheck(callback) {
      * Note how the object was instantiated in the constructor().
      * get() takes a callback function.
      */
-     this.connector.get((data, error) => {
-         if (error) {
-             callback(data,error);
-         } else {
-             if (data.hasOwnProperty('body')) {
-                 var body_array = (JSON.parse(data.body));
-                 var number_results = body_array.result.length;
-                 var chgTickets = [];
-                 for(var n = 0; n < number_results; n += 1) {
-                     var result_array = (JSON.parse(data.body).result);
-                     chgTickets.push({"change_ticket_number" : result_array[n].number, "active" : result_array[n].active, "priority" : result_array[n].priority, "description" : result_array[n].description, "work_start" : result_array[n].work_start, "work_end" : result_array[n].work_end, "change_ticket_key" : result_array[n].sys_id});
-                 }
-                 callback(chgTickets, error);
-             }
-         }
-     });
+     this.connector.get(callback);
   }
 
   /**
@@ -225,18 +210,7 @@ healthcheck(callback) {
      * Note how the object was instantiated in the constructor().
      * post() takes a callback function.
      */
-     this.connector.post((data, error) => {
-         if (error) {
-             callback(data,error);
-         } else {
-             if (data.hasOwnProperty('body')) {
-                 var chgTicket = {};
-                 var results_array = (JSON.parse(data.body).result);
-                 chgTicket = ({"change_ticket_number" : results_array.number, "active" : results_array.active, "priority" : results_array.priority, "description" : results_array.description, "work_start" : results_array.work_start, "work_end" : results_array.work_end, "change_ticket_key" : results_array.sys_id});
-                 callback(chgTicket, error);
-             }
-         }
-     });
+     this.connector.post(callback);
   }
 }
 
